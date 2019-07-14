@@ -1,5 +1,5 @@
 {
-  "name": "express-boilerplate",
+  "name": "noteful-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,11 +8,15 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "migrate": "postgrator --config postgrator-config.js",
-    "predeploy": "npm audit",
+    "migrate-production": "postgrator --config postgrator-production-config.js",
+    "predeploy": "npm audit && npm run migrate-production",
     "deploy": "git push heroku master"
   },
   "keywords": [],
-  "author": "",
+  "engines": {
+    "node": "10.15.3"
+  },
+  "author": "Brendan Meehan",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
