@@ -21,8 +21,8 @@ notesRouter
 })
 .post(jsonParser, (req, res, next) => {
     const knexInstance = req.app.get('db')
-    const { name, content, folderId } = req.body
-    const newNote = { name, content, folderId }
+    const { name, content, folderid } = req.body
+    const newNote = { name, content, folderid }
     for (const [key, value] of Object.entries(newNote)) {
         if(value == null) {
             return res.status(400).json({
@@ -42,7 +42,7 @@ notesRouter
             id: note.id,
             name: note.name,
             content: note.content,
-            folderId: note.folderId
+            folderid: note.folderid
         })
     }).catch(next)
 })
